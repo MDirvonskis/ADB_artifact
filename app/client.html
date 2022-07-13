@@ -52,19 +52,16 @@
             <input name="empn" v-model="employee.empn" placeholder="empn">
             <button @click="findEmployee()">search</button>
         </form>
-		<h2>Responses</h2>
-		<ul>
-			<li v-for="employee in foundEmployee">
-				<span data-field="empn">{{employee.empn}}</span>
-				<span data-field="ENAME">{{employee.ename}}</span>
-				<span data-field="JOB">{{employee.job}}</span>
-				<span data-field="MGR">{{employee.mgr}}</span>
-				<span data-field="HIREDATE">{{employee.hiredate}}</span>
-				<span data-field="SAL">{{employee.sal}}</span>
-				<span data-field="DEPTNO">{{employee.deptno}}</span>
-				
-			</li>
-		</ul>
+		<h2>Output</h2>
+			<form v-for="employee in foundEmployee">
+			<p data-field="EMPN">{{employee.EMPN}}</p>
+			<p data-field="ENAME">Name: {{employee.ENAME}}</p>
+			<p data-field="JOB">Job: {{employee.JOB}}</p>
+			<p data-field="MGR">MGR: {{employee.MGR}}</p>
+			<p data-field="HIREDATE">HIREDATE: {{employee.HIREDATE}}</p>
+			<p data-field="SAL">Salary: {{employee.SAL}}</p>
+			<p data-field="DEPTNO">DEPTNO: {{employee.DEPTNO}}</p>
+		</form>
 	</div>
 <script type="module">
 	const urlAPI = ''//Path
@@ -87,7 +84,7 @@
                 dname: '',
                 loc: '',
             },
-            foundEmployee: [],
+            foundEmployee: null,
 		}
 	  },
 	  created() {
