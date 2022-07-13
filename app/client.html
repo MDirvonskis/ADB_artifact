@@ -16,14 +16,14 @@
 
 		<h2>Add employee</h2>
 		<form @submit.prevent="addEmployee">
-			1<input name="name" v-model="employee" placeholder="name">
-            2<input name="name" v-model="employee" placeholder="name">
-            3<input name="name" v-model="employee" placeholder="name">
-            4<input name="name" v-model="employee" placeholder="name">
-            5<input name="name" v-model="employee" placeholder="name">
-            6<input name="name" v-model="employee" placeholder="name">
-            7<input name="name" v-model="employee" placeholder="name">
-            8<input name="name" v-model="employee" placeholder="name">
+			1<input name="empn" v-model="employee.empn" placeholder="name">
+            2<input name="ename" v-model="employee.ename" placeholder="name">
+            3<input name="job" v-model="employee.job" placeholder="name">
+            4<input name="mgr" v-model="employee.mgr" placeholder="name">
+            5<input name="hiredate" v-model="employee.hiredate" placeholder="name">
+            6<input name="sal" v-model="employee.sal" placeholder="name">
+            7<input name="comm" v-model="employee.comm" placeholder="name">
+            8<input name="deptno" v-model="employee.deptno" placeholder="name">
 			<button data-action="addEmployee">Add</button>
 		</form>
 	</div>
@@ -33,6 +33,16 @@
 	const RootComponent = {
 	  data() {
 		return {
+            employee:{
+                empn: '',
+                ename: '',
+                job: '',
+                mgr: '',
+                hiredate: '',
+                sal: '',
+                comm: '',
+                deptno: '',
+            },
 		}
 	  },
 	  created() {
