@@ -13,7 +13,7 @@ app.use(cors())//allows curl commands
 
 app.get('/', (req, res) => {
   //send html here
-  res.send('Hello World!')
+  res.sendFile(__dirname+'/client.html')
 })
 app.post('/showEmployee/:id', async (req,res) => {
   const id = parseFloat(req.params.id)
