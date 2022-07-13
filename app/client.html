@@ -16,21 +16,21 @@
 
 		<h3>Add employee</h2>
 		<form @submit.prevent="addEmployee">
-			<input name="empn" v-model="employee.empn" placeholder="name">
-            <input name="ename" v-model="employee.ename" placeholder="name">
-            <input name="job" v-model="employee.job" placeholder="name">
-            <input name="mgr" v-model="employee.mgr" placeholder="name">
-            <input name="hiredate" v-model="employee.hiredate" placeholder="YYYY-MM-DD">
-            <input name="sal" v-model="employee.sal" placeholder="name">
-            <input name="comm" v-model="employee.comm" placeholder="name">
-            <input name="deptno" v-model="employee.deptno" placeholder="name">
+			<input name="empn" v-model="employee.empn" placeholder="empn">
+            <input name="ename" v-model="employee.ename" placeholder="ename">
+            <input name="job" v-model="employee.job" placeholder="job">
+            <input name="mgr" v-model="employee.mgr" placeholder="mgr">
+            <input name="hiredate" v-model="employee.hiredate" placeholder="Hire date:YYYY-MM-DD">
+            <input name="sal" v-model="employee.sal" placeholder="sal">
+            <input name="comm" v-model="employee.comm" placeholder="comm">
+            <input name="deptno" v-model="employee.deptno" placeholder="deptno">
 			<button data-action="addEmployee">add</button>
 		</form>
 
         <h3>Remove employee</h2>
             <form @submit.prevent="removeEmployee">
                 <input name="empn" v-model="employee.empn" placeholder="name">
-                <button data-action="removeEmployee">del</button>
+                <button data-action="delete" @click="removeEmployee(employee.empn)">del</button>
             </form>
 
         <h3>Add department</h2>
@@ -44,7 +44,7 @@
         <h3>Remove department</h2>
         <form @submit.prevent="removeDepartment">
             <input name="deptno" v-model="department.deptno" placeholder="name">
-            <button data-action="removeDepartment">del</button>
+            <button @click="removeDepartment(department.deptno)">del</button>
         </form>
 
 	</div>
@@ -94,8 +94,6 @@
 				body: JSON.stringify(this.employee),
 			})
 				.then(response => response.json())
-				//.then(()=>this.clearInput())
-				//.then(()=>this.updateAttendees())
 			.catch(err => console.error(err));
 		},
         addDepartment() {
@@ -107,22 +105,18 @@
 				.then(response => response.json())
 			.catch(err => console.error(err));
 		},
-        removeEmployee(empn) {
-			fetch(`${urlAPI}/deleteEmployee/${empn}`, {
+        removeEmployee(id) {
+			fetch(`${urlAPI}/deleteEmployee/${id.JSON}`, {
 				method: 'DELETE',
 			})
-				.then(()=>this.updateAttendees())
 			.catch(err => console.error(err));
 		},
-        removeDepartment() {
-			fetch(`${urlAPI}/deleteDepartment/${department.deptno}`, {
+        removeDepartment(id) {
+			fetch(`${urlAPI}/deleteDepartment/${id}`, {
 				method: 'DELETE',
 			})
-				.then(()=>this.updateAttendees())
 			.catch(err => console.error(err));
-		},
-
-        
+		}        
 	  },
 	}
 	const app = Vue.createApp(RootComponent)
