@@ -15,13 +15,17 @@ app.get('/', (req, res) => {
   //send html here
   res.sendFile(__dirname+'/client.html')
 })
-app.post('/showEmployee/:id', async (req,res) => {
-  const id = parseFloat(req.params.id)
+app.get('/showEmployee/:id', (req,res) => {
+  const id = parseInt(req.params.id)
   db.query(
     'SELECT * FROM EMP WHERE EMPNO =  ?',
     [id],
     function(err,results,fields){
-      res.json(results).statusCode(201)
+      console.log(results)
+      //console.log(fields)
+      //console.log(JSON.parse(results))
+      res.send(results)
+      console.log(1)
     }
   )
 })

@@ -35,21 +35,39 @@
 
         <h3>Add department</h2>
 		<form @submit.prevent="addDepartment">
-			<input name="deptno" v-model="department.deptno" placeholder="name">
+			<input name="deptno" v-model="department.deptno" placeholder="deptno">
             <input name="dname" v-model="department.dname" placeholder="name">
-            <input name="loc" v-model="department.loc" placeholder="name">
+            <input name="loc" v-model="department.loc" placeholder="location">
 			<button data-action="addDepartment">add</button>
 		</form>
 
-        <h3>Remove department</h2>
-        <form @submit.prevent="removeDepartment">
-            <input name="deptno" v-model="department.deptno" placeholder="name">
-            <button @click="removeDepartment()">del</button>
-        </form>
+		<h3>Remove department</h2>
+			<form @submit.prevent="removeDepartment">
+				<input name="deptno" v-model="department.deptno" placeholder="deptno">
+				<button @click="removeDepartment()">del</button>
+			</form>
 
+        <h3>Find employee</h2>
+        <form @submit.prevent="findEmployee">
+            <input name="empn" v-model="employee.empn" placeholder="empn">
+            <button @click="findEmployee()">search</button>
+        </form>
+		<h2>Responses</h2>
+		<ul>
+			<li v-for="employee in foundEmployee">
+				<span data-field="empn">{{employee.empn}}</span>
+				<span data-field="ENAME">{{employee.ename}}</span>
+				<span data-field="JOB">{{employee.job}}</span>
+				<span data-field="MGR">{{employee.mgr}}</span>
+				<span data-field="HIREDATE">{{employee.hiredate}}</span>
+				<span data-field="SAL">{{employee.sal}}</span>
+				<span data-field="DEPTNO">{{employee.deptno}}</span>
+				
+			</li>
+		</ul>
 	</div>
 <script type="module">
-	const urlAPI = ''
+	const urlAPI = ''//Path
 
 	const RootComponent = {
 	  data() {
@@ -69,16 +87,7 @@
                 dname: '',
                 loc: '',
             },
-            findEmployee:{
-                empn: '',
-                ename: '',
-                job: '',
-                mgr: '',
-                hiredate: '',
-                sal: '',
-                comm: '',
-                deptno: '',
-            },
+            foundEmployee: [],
 		}
 	  },
 	  created() {
@@ -116,7 +125,15 @@
 				method: 'DELETE',
 			})
 			.catch(err => console.error(err));
-		}        
+		},
+		findEmployee() {
+			fetch(`${urlAPI}/showEmployee/${(this.employee.empn)}`, {
+				method: 'GET',
+			})
+			.then(response => response.json())
+			.then(data => this.foundEmployee = data)//This should populate foundEmployee
+			.catch(err => console.error(err));
+		},      
 	  },
 	}
 	const app = Vue.createApp(RootComponent)
