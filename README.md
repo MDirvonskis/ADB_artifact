@@ -18,5 +18,8 @@ curl -v -X POST    http://localhost:3000/addEmployee -H "Content-Type: applicati
 
 curl -v -X POST    http://localhost:3000/addDepartment -H "Content-Type: application/json" -d '{"id": 50, "dname": "test", "loc": "save"}'
 
-curl -v -X DELETE  http://localhost:3000/deleteEmployee/1
+curl -v -X DELETE  http://localhost:3000/deleteEmployee/
 //add EMPNO at the end to delete employee
+
+curl -v -X DELETE  http://localhost:3000/deleteDepartment/
+//add DEPTNO at the end to delete department
