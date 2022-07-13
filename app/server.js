@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const { connect } = require('.database');
+//const { connect } = require('./database');
 const db = require('./database');//Route for database connection
 
 app.use(express.json());//allows json to be parsed
@@ -49,7 +49,6 @@ app.post('/addDepartment', (req,res) =>{
     console.log('Created new Employee')
     res.status(201)
   }
-
 })
 
 

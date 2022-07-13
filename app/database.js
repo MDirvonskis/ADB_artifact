@@ -3,5 +3,5 @@ module.exports = mysql.createConnection({
     host: 'localhost',
     user: 'md',
     password: '@SQL17',
-    database: 'Database_MCOMD3ADB'
+    database: 'test1'
 });
