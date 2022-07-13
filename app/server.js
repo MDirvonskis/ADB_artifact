@@ -1,24 +1,29 @@
 const express = require('express')
-const db = require('./database');
+const db = require('./database')
 const cors = require('cors')
+const mysql = require('mysql2')
 const app = express()
 const port = 3000
+
 //const { connect } = require('./database');
 //Route for database connection
 app.use(express.json())//allows json to be parsed
 app.use(cors())//allows curl commands
-//1id
-//2ename
-//3mgr
-//4hiredate
-//5sal
-//6comm
-//7depno
 
 
 app.get('/', (req, res) => {
   //send html here
   res.send('Hello World!')
+})
+app.post('/showEmployee/:id', async (req,res) => {
+  const id = parseFloat(req.params.id)
+  db.query(
+    'SELECT * FROM EMP WHERE EMPNO =  ?',
+    [id],
+    function(err,results,fields){
+      res.json(results).statusCode(201)
+    }
+  )
 })
 app.post('/addEmployee', (req,res) =>{
   //
