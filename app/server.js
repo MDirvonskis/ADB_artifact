@@ -41,13 +41,11 @@ app.post('/addDepartment', (req,res) =>{
   db.query(sql,[req.body.id, req.body.dname, req.body.loc])
 })
 app.delete('/deleteEmployee/:id', (req,res) =>{
-  //
+  const id = parseFloat(req.params.id)
   var sql = `DELETE FROM EMP
             WHERE EMPNO = ?`;
-  db.query(sql,[req.body.id])
+  db.query(sql,[id])
 })
-
-
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
