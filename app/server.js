@@ -3,8 +3,10 @@ const app = express()
 const port = 3000
 //const { connect } = require('./database');
 const db = require('./database');//Route for database connection
+const cors = require('cors')
 
-app.use(express.json());//allows json to be parsed
+app.use(express.json())//allows json to be parsed
+app.use(cors)//allows curl commands
 //1id
 //2ename
 //3mgr
