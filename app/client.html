@@ -14,8 +14,8 @@
 	<h1>MCOMD3ADB</h1>
 	<div id="app">
 
-		<h2>Remove employee</h2>
-		<form @submit.prevent="removeEmployee">
+		<h3>Add employee</h2>
+		<form @submit.prevent="addEmployee">
 			<input name="empn" v-model="employee.empn" placeholder="name">
             <input name="ename" v-model="employee.ename" placeholder="name">
             <input name="job" v-model="employee.job" placeholder="name">
@@ -24,15 +24,27 @@
             <input name="sal" v-model="employee.sal" placeholder="name">
             <input name="comm" v-model="employee.comm" placeholder="name">
             <input name="deptno" v-model="employee.deptno" placeholder="name">
-			<button data-action="removeEmployee">Remove</button>
+			<button data-action="addEmployee">add</button>
 		</form>
-        <h2>Remove department</h2>
-		<form @submit.prevent="removeDepartment">
+        <h3>Remove employee</h2>
+            <form @submit.prevent="removeEmployee">
+                <input name="empn" v-model="employee.empn" placeholder="name">
+                <button data-action="removeEmployee">del</button>
+            </form>
+
+        <h3>Add department</h2>
+		<form @submit.prevent="addDepartment">
 			<input name="deptno" v-model="department.deptno" placeholder="name">
             <input name="dname" v-model="department.dname" placeholder="name">
             <input name="loc" v-model="department.loc" placeholder="name">
-			<button data-action="removeDepartment">Remove</button>
+			<button data-action="addDepartment">add</button>
 		</form>
+        <h3>Remove department</h2>
+        <form @submit.prevent="addDepartment">
+            <input name="deptno" v-model="department.deptno" placeholder="name">
+            <button data-action="removeDepartment">del</button>
+        </form>
+
 	</div>
 <script type="module">
 	const urlAPI = ''
@@ -55,6 +67,16 @@
                 dname: '',
                 loc: '',
             },
+            findEmployee:{
+                empn: '',
+                ename: '',
+                job: '',
+                mgr: '',
+                hiredate: '',
+                sal: '',
+                comm: '',
+                deptno: '',
+            },
 		}
 	  },
 	  created() {
@@ -62,6 +84,7 @@
 	  components: {
 	  },
 	  methods: {
+        
 	  },
 	}
 	const app = Vue.createApp(RootComponent)
