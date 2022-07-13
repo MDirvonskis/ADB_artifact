@@ -1,12 +1,14 @@
 const express = require('express')
+const db = require('./database');
+const cors = require('cors')
 const app = express()
 const port = 3000
 //const { connect } = require('./database');
-const db = require('./database');//Route for database connection
-const cors = require('cors')
+//Route for database connection
+
 
 app.use(express.json())//allows json to be parsed
-app.use(cors)//allows curl commands
+app.use(cors())//allows curl commands
 //1id
 //2ename
 //3mgr
@@ -22,39 +24,22 @@ app.get('/', (req, res) => {
 })
 app.post('/addEmployee', (req,res) =>{
   //
-  var sql = `INSERT INTO EMP 
+  var sql = `INSERT INTO EMP(EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, COMM, DEPTNO)
             VALUES
             (
-                ?, ?, ?, ?, ?, ?, ?
+                ?, ?, ?, ?, ?, ?, ?, ?
             )`;
-  db.query(sql,[req.params.id, req.params.ename, req.params.mgr, req.params.hiredate, req.params.sal, req.params.comm, req.params.deptno])
-  if(err){
-    res.sendStatus(500)
-  }
-  else{
-    console.log('Created new Employee')
-    res.status(201)
-  }
+  db.query(sql,[req.body.id, req.body.ename, req.body.job, req.body.mgr, req.body.hiredate, req.body.sal, req.body.comm, req.body.deptno])
 })
 app.post('/addDepartment', (req,res) =>{
   //
-  var sql = `INSERT INTO DEPT 
+  var sql = `INSERT INTO DEPT(DEPTNO, DNAME, LOC)
             VALUES
             (
                 ?, ?, ?
             )`;
-  db.query(sql,[req.params.id, req.params.dname, req.params.loc])
-  if(err){
-    res.sendStatus(500)
-  }
-  else{
-    console.log('Created new Employee')
-    res.status(201)
-  }
+  db.query(sql,[req.body.id, req.body.dname, req.body.loc])
 })
-
-
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
