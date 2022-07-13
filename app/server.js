@@ -21,11 +21,11 @@ app.get('/showEmployee/:id', (req,res) => {
     'SELECT * FROM EMP WHERE EMPNO =  ?',
     [id],
     function(err,results,fields){
-      console.log(results)
+      //console.log(results)
       //console.log(fields)
       //console.log(JSON.parse(results))
       res.send(results)
-      console.log(1)
+      //console.log(1)
     }
   )
 })

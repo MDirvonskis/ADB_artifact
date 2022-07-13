@@ -1,13 +1,13 @@
 # ADB_artifact
-# Install Express.js
+# Install Express.js :https://expressjs.com/
 - npm init
 - npm $ npm install express
 
-# Install Vue.js
+# Install Vue.js :https://vuejs.org/
 - npm install vue 
 - npm install vue@csp
 
-# Install mySQL Database:
+# Install mySQL :https://www.npmjs.com/package/mysql2
 - npm i mysql2
 
 # Start the server
