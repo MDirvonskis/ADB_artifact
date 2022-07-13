@@ -14,17 +14,24 @@
 	<h1>MCOMD3ADB</h1>
 	<div id="app">
 
-		<h2>Add employee</h2>
-		<form @submit.prevent="addEmployee">
-			1<input name="empn" v-model="employee.empn" placeholder="name">
-            2<input name="ename" v-model="employee.ename" placeholder="name">
-            3<input name="job" v-model="employee.job" placeholder="name">
-            4<input name="mgr" v-model="employee.mgr" placeholder="name">
-            5<input name="hiredate" v-model="employee.hiredate" placeholder="name">
-            6<input name="sal" v-model="employee.sal" placeholder="name">
-            7<input name="comm" v-model="employee.comm" placeholder="name">
-            8<input name="deptno" v-model="employee.deptno" placeholder="name">
-			<button data-action="addEmployee">Add</button>
+		<h2>Remove employee</h2>
+		<form @submit.prevent="removeEmployee">
+			<input name="empn" v-model="employee.empn" placeholder="name">
+            <input name="ename" v-model="employee.ename" placeholder="name">
+            <input name="job" v-model="employee.job" placeholder="name">
+            <input name="mgr" v-model="employee.mgr" placeholder="name">
+            <input name="hiredate" v-model="employee.hiredate" placeholder="name">
+            <input name="sal" v-model="employee.sal" placeholder="name">
+            <input name="comm" v-model="employee.comm" placeholder="name">
+            <input name="deptno" v-model="employee.deptno" placeholder="name">
+			<button data-action="removeEmployee">Remove</button>
+		</form>
+        <h2>Remove department</h2>
+		<form @submit.prevent="removeDepartment">
+			<input name="deptno" v-model="department.deptno" placeholder="name">
+            <input name="dname" v-model="department.dname" placeholder="name">
+            <input name="loc" v-model="department.loc" placeholder="name">
+			<button data-action="removeDepartment">Remove</button>
 		</form>
 	</div>
 <script type="module">
@@ -42,6 +49,11 @@
                 sal: '',
                 comm: '',
                 deptno: '',
+            },
+            department:{
+                deptno: '',
+                dname: '',
+                loc: '',
             },
 		}
 	  },
