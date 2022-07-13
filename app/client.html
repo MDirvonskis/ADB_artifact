@@ -20,12 +20,13 @@
             <input name="ename" v-model="employee.ename" placeholder="name">
             <input name="job" v-model="employee.job" placeholder="name">
             <input name="mgr" v-model="employee.mgr" placeholder="name">
-            <input name="hiredate" v-model="employee.hiredate" placeholder="name">
+            <input name="hiredate" v-model="employee.hiredate" placeholder="YYYY-MM-DD">
             <input name="sal" v-model="employee.sal" placeholder="name">
             <input name="comm" v-model="employee.comm" placeholder="name">
             <input name="deptno" v-model="employee.deptno" placeholder="name">
 			<button data-action="addEmployee">add</button>
 		</form>
+
         <h3>Remove employee</h2>
             <form @submit.prevent="removeEmployee">
                 <input name="empn" v-model="employee.empn" placeholder="name">
@@ -39,8 +40,9 @@
             <input name="loc" v-model="department.loc" placeholder="name">
 			<button data-action="addDepartment">add</button>
 		</form>
+
         <h3>Remove department</h2>
-        <form @submit.prevent="addDepartment">
+        <form @submit.prevent="removeDepartment">
             <input name="deptno" v-model="department.deptno" placeholder="name">
             <button data-action="removeDepartment">del</button>
         </form>
@@ -80,10 +82,46 @@
 		}
 	  },
 	  created() {
+        
 	  },
 	  components: {
 	  },
 	  methods: {
+        addEmployee() {
+			fetch(`${urlAPI}/addEmployee`, {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(this.employee),
+			})
+				.then(response => response.json())
+				//.then(()=>this.clearInput())
+				//.then(()=>this.updateAttendees())
+			.catch(err => console.error(err));
+		},
+        addDepartment() {
+			fetch(`${urlAPI}/addDepartment`, {
+				method: 'POST',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify(this.department),
+			})
+				.then(response => response.json())
+			.catch(err => console.error(err));
+		},
+        removeEmployee(empn) {
+			fetch(`${urlAPI}/deleteEmployee/${empn}`, {
+				method: 'DELETE',
+			})
+				.then(()=>this.updateAttendees())
+			.catch(err => console.error(err));
+		},
+        removeDepartment() {
+			fetch(`${urlAPI}/deleteDepartment/${department.deptno}`, {
+				method: 'DELETE',
+			})
+				.then(()=>this.updateAttendees())
+			.catch(err => console.error(err));
+		},
+
         
 	  },
 	}

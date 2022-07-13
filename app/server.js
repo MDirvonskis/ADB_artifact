@@ -32,7 +32,7 @@ app.post('/addEmployee', (req,res) =>{
             (
                 ?, ?, ?, ?, ?, ?, ?, ?
             )`;
-  db.query(sql,[req.body.id, req.body.ename, req.body.job, req.body.mgr, req.body.hiredate, req.body.sal, req.body.comm, req.body.deptno])
+  db.query(sql,[req.body.empn, req.body.ename, req.body.job, req.body.mgr, req.body.hiredate, req.body.sal, req.body.comm, req.body.deptno])
 })
 app.post('/addDepartment', (req,res) =>{
   //
@@ -41,7 +41,7 @@ app.post('/addDepartment', (req,res) =>{
             (
                 ?, ?, ?
             )`;
-  db.query(sql,[req.body.id, req.body.dname, req.body.loc])
+  db.query(sql,[req.body.deptno, req.body.dname, req.body.loc])
 })
 app.delete('/deleteEmployee/:id', (req,res) =>{
   const id = parseFloat(req.params.id)
