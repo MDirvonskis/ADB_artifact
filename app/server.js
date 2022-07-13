@@ -44,13 +44,13 @@ app.delete('/deleteEmployee/:id', (req,res) =>{
             WHERE EMPNO = ?`;
   db.query(sql,[id])
 })
-app.delete('/deleteDepartment/:id')
+app.delete('/deleteDepartment/:id', (req,res) =>{
 {
   const id = parseFloat(req.params.id)
   var sql = `DELETE FROM DEPT
             WHERE DEPTNO = ?`;
   db.query(sql,[id])
-}
+}})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
