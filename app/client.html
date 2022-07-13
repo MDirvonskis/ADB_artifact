@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<link id="favicon" rel="shortcut icon" type="image/png" href="data:image/png;base64,....==" />
+	<title>Generic title</title>
+	<style>
+		
+	</style>
+	<script src="https://unpkg.com/vue@next"></script> <!-- https://v3.vuejs.org/guide/installation.html#cdn -->
+	<!-- <script src="vue.js"></script> -->
+</head>
+<body>
+	<h1>MCOMD3ADB</h1>
+	<div id="app">
+
+		<h2>Add employee</h2>
+		<form @submit.prevent="addEmployee">
+			1<input name="name" v-model="employee" placeholder="name">
+            2<input name="name" v-model="employee" placeholder="name">
+            3<input name="name" v-model="employee" placeholder="name">
+            4<input name="name" v-model="employee" placeholder="name">
+            5<input name="name" v-model="employee" placeholder="name">
+            6<input name="name" v-model="employee" placeholder="name">
+            7<input name="name" v-model="employee" placeholder="name">
+            8<input name="name" v-model="employee" placeholder="name">
+			<button data-action="addEmployee">Add</button>
+		</form>
+	</div>
+<script type="module">
+	const urlAPI = ''
+
+	const RootComponent = {
+	  data() {
+		return {
+		}
+	  },
+	  created() {
+	  },
+	  components: {
+	  },
+	  methods: {
+	  },
+	}
+	const app = Vue.createApp(RootComponent)
+	const vm = app.mount('#app')
+</script>
+
+</body>
+</html>
