@@ -44,14 +44,14 @@ app.post('/addDepartment', (req,res) =>{
   db.query(sql,[req.body.deptno, req.body.dname, req.body.loc])
 })
 app.delete('/deleteEmployee/:id', (req,res) =>{
-  const id = parseFloat(req.params.id)
+  const id = parseInt(req.params.id)
   var sql = `DELETE FROM EMP
             WHERE EMPNO = ?`;
   db.query(sql,[id])
 })
 app.delete('/deleteDepartment/:id', (req,res) =>{
 {
-  const id = parseFloat(req.params.id)
+  const id = parseInt(req.params.id)
   var sql = `DELETE FROM DEPT
             WHERE DEPTNO = ?`;
   db.query(sql,[id])

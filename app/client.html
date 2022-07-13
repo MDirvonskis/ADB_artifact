@@ -16,21 +16,21 @@
 
 		<h3>Add employee</h2>
 		<form @submit.prevent="addEmployee">
-			<input name="empn" v-model="employee.empn" placeholder="empn">
-            <input name="ename" v-model="employee.ename" placeholder="ename">
-            <input name="job" v-model="employee.job" placeholder="job">
-            <input name="mgr" v-model="employee.mgr" placeholder="mgr">
+			<input name="empn" v-model="employee.empn" placeholder="EMPN">
+            <input name="ename" v-model="employee.ename" placeholder="Name">
+            <input name="job" v-model="employee.job" placeholder="Job name">
+            <input name="mgr" v-model="employee.mgr" placeholder="MGR">
             <input name="hiredate" v-model="employee.hiredate" placeholder="Hire date:YYYY-MM-DD">
-            <input name="sal" v-model="employee.sal" placeholder="sal">
-            <input name="comm" v-model="employee.comm" placeholder="comm">
-            <input name="deptno" v-model="employee.deptno" placeholder="deptno">
+            <input name="sal" v-model="employee.sal" placeholder="salary">
+            <input name="comm" v-model="employee.comm" placeholder="commision">
+            <input name="deptno" v-model="employee.deptno" placeholder="DEPTNO">
 			<button data-action="addEmployee">add</button>
 		</form>
 
         <h3>Remove employee</h2>
             <form @submit.prevent="removeEmployee">
                 <input name="empn" v-model="employee.empn" placeholder="name">
-                <button data-action="delete" @click="removeEmployee(employee.empn)">del</button>
+                <button @click="removeEmployee()">del</button>
             </form>
 
         <h3>Add department</h2>
@@ -44,7 +44,7 @@
         <h3>Remove department</h2>
         <form @submit.prevent="removeDepartment">
             <input name="deptno" v-model="department.deptno" placeholder="name">
-            <button @click="removeDepartment(department.deptno)">del</button>
+            <button @click="removeDepartment()">del</button>
         </form>
 
 	</div>
@@ -105,14 +105,14 @@
 				.then(response => response.json())
 			.catch(err => console.error(err));
 		},
-        removeEmployee(id) {
-			fetch(`${urlAPI}/deleteEmployee/${id.JSON}`, {
+        removeEmployee() {
+			fetch(`${urlAPI}/deleteEmployee/${(this.employee.empn)}`, {
 				method: 'DELETE',
 			})
 			.catch(err => console.error(err));
 		},
-        removeDepartment(id) {
-			fetch(`${urlAPI}/deleteDepartment/${id}`, {
+        removeDepartment() {
+			fetch(`${urlAPI}/deleteDepartment/${(this.department.deptno)}`, {
 				method: 'DELETE',
 			})
 			.catch(err => console.error(err));
