@@ -7,19 +7,19 @@ node server.js
 
 # Install Express.js :https://expressjs.com/
 ```
-- npm init
-- npm $ npm install express
+npm init
+npm $ npm install express
 ```
 
 # Install Vue.js :https://vuejs.org/
 ```
-- npm install vue 
-- npm install vue@csp
+npm install vue 
+npm install vue@csp
 ```
 
 # Install mySQL :https://www.npmjs.com/package/mysql2
 ```
-- npm i mysql2
+npm i mysql2
 ```
 
 # Curl commands
