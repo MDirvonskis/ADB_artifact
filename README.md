@@ -8,7 +8,7 @@ node server.js
 # Install Express.js :https://expressjs.com/
 ```
 npm init
-npm $ npm install express
+npm install express
 ```
 
 # Install Vue.js :https://vuejs.org/
